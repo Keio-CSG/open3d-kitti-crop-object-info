@@ -1,8 +1,8 @@
-import numpy as np
 import open3d as o3d
 
 from open3d_geometry.open3d_box import create_box_from_dim_with_arrow
 from open3d_geometry.open3d_coordinate import create_coordinate
+
 
 class PointCloudVis:
 
@@ -35,7 +35,6 @@ class PointCloudVis:
         vis.run()
         vis.destroy_window()
 
-
     @staticmethod
     def draw_points_with_boxes(points, boxes, box_colors=[]):
         '''
@@ -44,15 +43,15 @@ class PointCloudVis:
         box_colors: list(n) color of each box
         '''
 
-        #--------------------------------------------------------------
+        # --------------------------------------------------------------
         # get colors for each box
-        #--------------------------------------------------------------
+        # --------------------------------------------------------------
         if len(box_colors) == 0:
-            box_colors = [[1, 0, 0] for i in range(boxes.shape[0])] # red
+            box_colors = [[1, 0, 0] for i in range(boxes.shape[0])]  # red
 
-        #--------------------------------------------------------------
+        # --------------------------------------------------------------
         # create boxes
-        #--------------------------------------------------------------
+        # --------------------------------------------------------------
         boxes_o3d = []
         for i in range(boxes.shape[0]):
             dim = boxes[i]
@@ -61,24 +60,25 @@ class PointCloudVis:
             boxes_o3d.append(box_o3d)
             boxes_o3d.append(arrow)
 
-        #--------------------------------------------------------------
+        # --------------------------------------------------------------
         # coordinate frame
-        #--------------------------------------------------------------
+        # --------------------------------------------------------------
         coordinate_frame = create_coordinate(size=2.0, origin=[0, 0, 0])
 
-        #--------------------------------------------------------------
+        # --------------------------------------------------------------
         # point cloud
-        #--------------------------------------------------------------
+        # --------------------------------------------------------------
         points = points[:, :3]
         point_color = [0.5, 0.5, 0.5]
-        point_colors = [point_color for i in range(points.shape[0])] # points color
+        point_colors = [point_color for i in range(points.shape[0])]
+        # points color
         pc = o3d.geometry.PointCloud()
         pc.points = o3d.utility.Vector3dVector(points)
         pc.colors = o3d.utility.Vector3dVector(point_colors)
 
-        #--------------------------------------------------------------
+        # --------------------------------------------------------------
         # draw geometry in open3d
-        #--------------------------------------------------------------
+        # --------------------------------------------------------------
         vis = o3d.visualization.Visualizer()
         vis.create_window()
 

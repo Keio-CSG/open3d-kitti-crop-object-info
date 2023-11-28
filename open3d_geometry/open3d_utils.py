@@ -25,7 +25,8 @@ def get_box_arrow(dim):
     # a_start = [x, y, z+h]
     # a_end = [x+dx, y+dy, z+h]
     # arrow = [a_start, a_end]
-    arrow = [x, y, z+h, x+dx, y+dy, z+h] # [x0, y0, z0, x1, y1, z1], point0--->point1
+    arrow = [x, y, z+h, x+dx, y+dy, z+h]
+    # [x0, y0, z0, x1, y1, z1], point0--->point1
     return arrow
 
 
@@ -38,7 +39,7 @@ def box_dim2corners(dim):
     #        /|         /|
     #       4 -------- 5 .
     #       | |        | |
-    #       . 3 -------- 2            
+    #       . 3 -------- 2
     #       |/         |/
     #       0 -------- 1
 
@@ -58,15 +59,16 @@ def box_dim2corners(dim):
     yaw = dim[6]
 
     # 3d bounding box corners
-    Box = np.array([[-l / 2, -l / 2, l / 2, l / 2, -l / 2, -l / 2, l / 2, l / 2],
-                    [w / 2, -w / 2, -w / 2, w / 2, w / 2, -w / 2, -w / 2, w / 2],
-                    [0, 0, 0, 0, h, h, h, h]])
+    Box = np.array([
+        [-l / 2, -l / 2, l / 2, l / 2, -l / 2, -l / 2, l / 2, l / 2],
+        [w / 2, -w / 2, -w / 2, w / 2, w / 2, -w / 2, -w / 2, w / 2],
+        [0, 0, 0, 0, h, h, h, h]])
 
     R = rotz(yaw)
-    corners_3d = np.dot(R, Box) # corners_3d: (3, 8)
+    corners_3d = np.dot(R, Box)  # corners_3d: (3, 8)
 
-    corners_3d[0,:] = corners_3d[0,:] + x
-    corners_3d[1,:] = corners_3d[1,:] + y
-    corners_3d[2,:] = corners_3d[2,:] + z
+    corners_3d[0, :] = corners_3d[0, :] + x
+    corners_3d[1, :] = corners_3d[1, :] + y
+    corners_3d[2, :] = corners_3d[2, :] + z
 
     return np.transpose(corners_3d)
