@@ -3,14 +3,14 @@ import numpy as np
 
 # classes
 class_list = ['Car', 'Van' , 'Truck' , 'Pedestrian' , 'Person_sitting' , 'Cyclist' , 'Tram', 'Misc']
-colors_list = [[1, 0, 0],  		 # car------------------>red
-				[0.5, 1, 0], 	 # Van
-				[0, 1, 0.5], 	 # Truck
-				[0, 1, 0], 		 # Pedestrian----------->green
-				[0.2, 0.5, 0], 	 # Person_sitting
-				[0, 0, 1], 		 # Cyclist-------------->blue
-				[0.7, 0.7, 0.3], # Tram
-				[0.2, 0.5, 0.7]] # Misc
+colors_list = [[1, 0, 0],           # car------------------>red
+                [0.5, 1, 0],      # Van
+                [0, 1, 0.5],      # Truck
+                [0, 1, 0],          # Pedestrian----------->green
+                [0.2, 0.5, 0],      # Person_sitting
+                [0, 0, 1],          # Cyclist-------------->blue
+                [0.7, 0.7, 0.3], # Tram
+                [0.2, 0.5, 0.7]] # Misc
 
 
 def load_kitti_calib(calib_file):

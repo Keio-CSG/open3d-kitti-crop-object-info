@@ -39,7 +39,7 @@ def vis_kitti(data_path, frame):
 
 
 if __name__ == "__main__":
-	
+    
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", "--d", type=str, default="./data/KITTI/training", help="kitti data path")
     parser.add_argument("--frame", "--f", type=int, default=500, help="frame of the data")
